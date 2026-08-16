@@ -101,6 +101,11 @@ public:
             LOGD("Skipping ppid=%d uid=%d isChildZygote=%d", getppid(), args->uid, isChildZygote);
             return;
         }
+
+        // Make the clean-namespace requirement explicit for every compatible
+        // Zygisk implementation. APatch's per-app exclusion remains required;
+        // this option is a request to the loader, not a replacement for it.
+        api->setOption(zygisk::Option::FORCE_DENYLIST_UNMOUNT);
         LOGD("Processing ppid=%d uid=%d isChildZygote=%d", getppid(), args->uid, isChildZygote);
 
         ASSERT_DO(preAppSpecialize, hookPLTByName("libandroid_runtime.so", "unshare", new_unshare, &old_unshare), return);

@@ -19,9 +19,12 @@
 Using the **release** build is recommended over the debug build. Only use debug builds if you are going to make a bug report.
 
 ### KernelSU & APatch users:
-1. Install ZygiskNext.
+1. Install a compatible Zygisk implementation. This APatch compatibility build targets IRezygisk i17+; upstream ZygiskNext remains supported.
 1. Make sure the option `Umount modules/Exclude modifications` is enabled for the target app in the KernelSU/APatch Manager.
 1. Disable `Enforce DenyList` in ZygiskNext settings if there is one.
+
+For the APatch + IRezygisk lifecycle boundary, physical module unloading, and SELinux limitations, see
+[APatch / IRezygisk compatibility notes](docs/APatch_IRezygisk_compatibility_notes_2026-08-16.md).
 
 ### Magisk users:
 1. Update your Magisk to 27.0 or newer for better hiding capabilities. (optional)
